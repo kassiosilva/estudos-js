@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Curso de Javascript</title>
+    </head>
+    <body>
+        <h1>Intervalo e timeout</h1>
+
+        <p>Um <strong>intervalo</strong> dentro do javascript é alguma função que ela executa várias vezes dentro de um intervalo.</p>
+
+        <p>O <strong>setTimeout</strong> dentro do javascript é alguma função que ele irá executar uma vez respeitando o delay especificado.</p>
+
+        <script>
+            function exibeAlgo() {
+                console.log('Hello World!');
+            }
+
+            // Perceba que passamos exibeAlgo sem os parênteses, isso acontece porque quando queremos executá-lo, mas só que nesse queremos só referencia-lo.
+            setTimeout(exibeAlgo, 5000);
+        </script>
+    </body>
+</html>
