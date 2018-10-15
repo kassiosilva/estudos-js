@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Curso de Javascript</title>
+    </head>
+    <body>
+        <h1>Exercício 2</h1>
+
+        <div id="containerSquares"></div>
+
+        <button id="butaoCriar">Crie um quadrado</button>
+
+        <script>
+            var containerSquares = document.getElementById('containerSquares');
+            var butaoCriar = document.getElementById('butaoCriar');
+
+            // Evento hover
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+
+                return color;
+            }
+
+            // Criando elemento no evento click
+            butaoCriar.onclick = function() {
+                var square = document.createElement('div');
+
+                square.style.width = '100px';
+                square.style.height = '100px';
+                square.style.backgroundColor = 'red';
+                square.style.marginBottom = '10px';
+
+                square.onmouseover = function() {
+                    square.style.backgroundColor = getRandomColor();
+                }
+
+                containerSquares.appendChild(square);
+            }
+        </script>
+    </body>
+</html>

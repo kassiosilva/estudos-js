@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Curso de Javascript</title>
+    </head>
+    <body>
+        <h1>Exercício 3</h1>
+
+        <div id="containerLista">
+            <ul>
+
+            </ul>
+        </div>
+
+        <script>
+            var nomes = ['Diego', 'Gabriel', 'Lucas'];
+            var lista = document.querySelector('#containerLista ul');
+
+            for (nome of nomes) {
+                var itensLista = document.createElement('li');
+                itensLista.innerHTML = nome;
+
+                lista.appendChild(itensLista);
+            }
+        </script>
+    </body>
+</html>
