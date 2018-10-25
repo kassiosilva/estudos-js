@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Curso de Javascript</title>
+</head>
+
+<body>
+    <h1>Exercício 3</h1>
+
+    <div id="app">
+        <input type="text" id="nome">
+        <button id="adicionar">Adicionar</button>
+
+        <ul>
+
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var campoNome = document.getElementById('nome');
+        var adicionar = document.getElementById('adicionar');
+
+        var lista = document.querySelector('#app ul');
+
+        function renderRepositorios(repositorios) {
+            lista.innerHTML = '';
+
+            for (repositorio of repositorios) {
+                var listElement = document.createElement('li');
+                var listText = document.createTextNode(repositorio.name);
+
+
+                listElement.appendChild(listText);
+
+                lista.appendChild(listElement);
+            }
+        }
+
+        function renderLoading() {
+            lista.innerHTML = '';
+
+            var listLoading = document.createElement('li');
+            var listLoadingText = document.createTextNode('Carregando...');
+
+            listLoading.appendChild(listLoadingText);
+            lista.appendChild(listLoading);
+        }
+
+        function renderError() {
+            lista.innerHTML = '';
+
+            var errorElement = document.createElement('li');
+            var errorElementText = document.createTextNode('Error! Usuário não encontrado :(');
+
+            errorElement.appendChild(errorElementText);
+            lista.appendChild(errorElement);
+        }
+
+        adicionar.onclick = function listRepositories() {
+            var userGithub = campoNome.value;
+
+            renderLoading();
+
+            axios.get('https://api.github.com/users/' + userGithub + '/repos')
+                .then(function (response) {
+                    renderRepositorios(response.data);
+                }).catch(function (error) {
+                    renderError()
+                });
+        }
+    </script>
+</body>
+
+</html>

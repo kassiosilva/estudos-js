@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Curso de Javascript</title>
+</head>
+
+<body>
+    <h1>Exercício 2</h1>
+
+    <div id="app">
+        <input type="text" id="nome">
+        <button id="adicionar">Adicionar</button>
+
+        <ul>
+
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var campoNome = document.getElementById('nome');
+        var adicionar = document.getElementById('adicionar');
+
+        function renderRepositorios(repositorios) {
+            for (repositorio of repositorios) {
+                var lista = document.querySelector('#app ul');
+                var listElement = document.createElement('li');
+                var listText = document.createTextNode(repositorio.name);
+
+
+                listElement.appendChild(listText);
+
+                lista.appendChild(listElement);
+            }
+        }
+
+        adicionar.onclick = function listRepositorios() {
+            var userGithub = campoNome.value;
+
+            axios.get('https://api.github.com/users/' + userGithub + '/repos')
+                .then(function (response) {
+                    renderRepositorios(response.data);
+                }).catch(function (error) {
+                    console.warn(error);
+                });
+        }
+    </script>
+</body>
+
+</html>
